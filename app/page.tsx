@@ -1,61 +1,139 @@
-import ProductCard from '@/components/ProductCard';
+import CategorySection from '@/components/CategorySection';
+import DealsSection from '@/components/DealsSection';
+import ProductSection from '@/components/ProductSection';
 
-// Mock data for featured products
-const featuredProducts = [
+// Mock data for different product sections
+const freshProduce = [
   {
-    id: '1',
-    name: 'Wireless Headphones',
-    price: 99.99,
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop',
-    description: 'High-quality wireless headphones with noise cancellation',
+    id: 1,
+    name: 'Fresh Apples',
+    price: 2.99,
+    originalPrice: 3.99,
+    image: '/images/products/apples.jpg',
+    category: 'fruits',
+    unit: '1 lb',
+    discount: 25
   },
   {
-    id: '2',
-    name: 'Smart Watch',
-    price: 199.99,
-    image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&h=500&fit=crop',
-    description: 'Feature-rich smartwatch with health tracking',
+    id: 2,
+    name: 'Organic Bananas',
+    price: 1.99,
+    image: '/images/products/bananas.jpg',
+    category: 'fruits',
+    unit: '1 lb'
   },
   {
-    id: '3',
-    name: 'Laptop Backpack',
-    price: 49.99,
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop',
-    description: 'Durable and spacious laptop backpack',
+    id: 3,
+    name: 'Fresh Spinach',
+    price: 3.49,
+    image: '/images/products/spinach.jpg',
+    category: 'vegetables',
+    unit: '1 bunch'
   },
   {
-    id: '4',
-    name: 'Wireless Mouse',
-    price: 29.99,
-    image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=500&fit=crop',
-    description: 'Ergonomic wireless mouse for comfortable use',
+    id: 4,
+    name: 'Carrots',
+    price: 1.49,
+    image: '/images/products/carrots.jpg',
+    category: 'vegetables',
+    unit: '1 lb'
+  }
+];
+
+const dairyProducts = [
+  {
+    id: 5,
+    name: 'Whole Milk',
+    price: 3.99,
+    image: '/images/products/milk.jpg',
+    category: 'dairy',
+    unit: '1 gallon'
   },
+  {
+    id: 6,
+    name: 'Greek Yogurt',
+    price: 4.99,
+    image: '/images/products/yogurt.jpg',
+    category: 'dairy',
+    unit: '16 oz'
+  },
+  {
+    id: 7,
+    name: 'Cheddar Cheese',
+    price: 5.99,
+    image: '/images/products/cheese.jpg',
+    category: 'dairy',
+    unit: '8 oz'
+  },
+  {
+    id: 8,
+    name: 'Large Eggs',
+    price: 4.99,
+    image: '/images/products/eggs.jpg',
+    category: 'dairy',
+    unit: '12 count'
+  }
+];
+
+const pantryItems = [
+  {
+    id: 9,
+    name: 'Organic Rice',
+    price: 6.99,
+    image: '/images/products/rice.jpg',
+    category: 'pantry',
+    unit: '2 lb'
+  },
+  {
+    id: 10,
+    name: 'Pasta',
+    price: 2.99,
+    image: '/images/products/pasta.jpg',
+    category: 'pantry',
+    unit: '16 oz'
+  },
+  {
+    id: 11,
+    name: 'Olive Oil',
+    price: 8.99,
+    image: '/images/products/olive-oil.jpg',
+    category: 'pantry',
+    unit: '16 oz'
+  },
+  {
+    id: 12,
+    name: 'Canned Tomatoes',
+    price: 1.99,
+    image: '/images/products/tomatoes.jpg',
+    category: 'pantry',
+    unit: '14.5 oz'
+  }
 ];
 
 export default function Home() {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
-      <div className="relative bg-gray-900">
+      <div className="relative bg-green-700">
         <div className="absolute inset-0">
           <img
             className="h-full w-full object-cover"
-            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1600&h=400&fit=crop"
-            alt="Hero"
+            src="/images/hero/grocery-hero.jpg"
+            alt="Fresh Groceries"
           />
-          <div className="absolute inset-0 bg-gray-900 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-green-700 mix-blend-multiply" />
         </div>
         <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Welcome to E-Store
+            Fresh Groceries Delivered
           </h1>
-          <p className="mt-6 text-xl text-gray-300 max-w-3xl">
-            Discover our collection of premium products at unbeatable prices. Shop the latest trends with confidence.
+          <p className="mt-6 text-xl text-gray-100 max-w-3xl">
+            Shop for fresh produce, dairy, pantry items, and more. Get the best deals on groceries delivered to your doorstep.
           </p>
           <div className="mt-10">
             <a
               href="/products"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700"
             >
               Shop Now
             </a>
@@ -63,15 +141,32 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Featured Products */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">Featured Products</h2>
-        <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.id} {...product} />
-          ))}
-        </div>
-      </div>
+      {/* Category Section */}
+      <CategorySection />
+
+      {/* Deals Section */}
+      <DealsSection />
+
+      {/* Fresh Produce Section */}
+      <ProductSection
+        title="Fresh Produce"
+        products={freshProduce}
+        category="fruits-vegetables"
+      />
+
+      {/* Dairy & Eggs Section */}
+      <ProductSection
+        title="Dairy & Eggs"
+        products={dairyProducts}
+        category="dairy-eggs"
+      />
+
+      {/* Pantry Section */}
+      <ProductSection
+        title="Pantry Essentials"
+        products={pantryItems}
+        category="pantry"
+      />
     </div>
   );
 }

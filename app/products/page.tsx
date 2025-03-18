@@ -3,56 +3,106 @@ import ProductCard from '@/components/ProductCard';
 // Mock data for all products
 const products = [
   {
-    id: '1',
-    name: 'Wireless Headphones',
-    price: 99.99,
-    image: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop',
-    description: 'High-quality wireless headphones with noise cancellation',
-    category: 'Electronics',
+    id: 1,
+    name: 'Fresh Apples',
+    price: 2.99,
+    originalPrice: 3.99,
+    image: '/images/products/apples.jpg',
+    category: 'fruits',
+    unit: '1 lb',
+    discount: 25
   },
   {
-    id: '2',
-    name: 'Smart Watch',
-    price: 199.99,
-    image: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&h=500&fit=crop',
-    description: 'Feature-rich smartwatch with health tracking',
-    category: 'Electronics',
+    id: 2,
+    name: 'Organic Bananas',
+    price: 1.99,
+    image: '/images/products/bananas.jpg',
+    category: 'fruits',
+    unit: '1 lb'
   },
   {
-    id: '3',
-    name: 'Laptop Backpack',
-    price: 49.99,
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop',
-    description: 'Durable and spacious laptop backpack',
-    category: 'Accessories',
+    id: 3,
+    name: 'Fresh Spinach',
+    price: 3.49,
+    image: '/images/products/spinach.jpg',
+    category: 'vegetables',
+    unit: '1 bunch'
   },
   {
-    id: '4',
-    name: 'Wireless Mouse',
-    price: 29.99,
-    image: 'https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&h=500&fit=crop',
-    description: 'Ergonomic wireless mouse for comfortable use',
-    category: 'Electronics',
+    id: 4,
+    name: 'Carrots',
+    price: 1.49,
+    image: '/images/products/carrots.jpg',
+    category: 'vegetables',
+    unit: '1 lb'
   },
   {
-    id: '5',
-    name: 'Mechanical Keyboard',
-    price: 129.99,
-    image: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500&h=500&fit=crop',
-    description: 'RGB mechanical keyboard with custom switches',
-    category: 'Electronics',
+    id: 5,
+    name: 'Whole Milk',
+    price: 3.99,
+    image: '/images/products/milk.jpg',
+    category: 'dairy',
+    unit: '1 gallon'
   },
   {
-    id: '6',
-    name: 'USB-C Hub',
-    price: 39.99,
-    image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&h=500&fit=crop',
-    description: 'Multi-port USB-C hub for laptop connectivity',
-    category: 'Accessories',
+    id: 6,
+    name: 'Greek Yogurt',
+    price: 4.99,
+    image: '/images/products/yogurt.jpg',
+    category: 'dairy',
+    unit: '16 oz'
   },
+  {
+    id: 7,
+    name: 'Cheddar Cheese',
+    price: 5.99,
+    image: '/images/products/cheese.jpg',
+    category: 'dairy',
+    unit: '8 oz'
+  },
+  {
+    id: 8,
+    name: 'Large Eggs',
+    price: 4.99,
+    image: '/images/products/eggs.jpg',
+    category: 'dairy',
+    unit: '12 count'
+  },
+  {
+    id: 9,
+    name: 'Organic Rice',
+    price: 6.99,
+    image: '/images/products/rice.jpg',
+    category: 'pantry',
+    unit: '2 lb'
+  },
+  {
+    id: 10,
+    name: 'Pasta',
+    price: 2.99,
+    image: '/images/products/pasta.jpg',
+    category: 'pantry',
+    unit: '16 oz'
+  },
+  {
+    id: 11,
+    name: 'Olive Oil',
+    price: 8.99,
+    image: '/images/products/olive-oil.jpg',
+    category: 'pantry',
+    unit: '16 oz'
+  },
+  {
+    id: 12,
+    name: 'Canned Tomatoes',
+    price: 1.99,
+    image: '/images/products/tomatoes.jpg',
+    category: 'pantry',
+    unit: '14.5 oz'
+  }
 ];
 
-const categories = ['All', 'Electronics', 'Accessories'];
+const categories = ['All', 'Fruits & Vegetables', 'Dairy & Eggs', 'Pantry'];
 
 export default function ProductsPage() {
   return (
@@ -73,7 +123,7 @@ export default function ProductsPage() {
 
       <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
         {products.map((product) => (
-          <ProductCard key={product.id} {...product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>
