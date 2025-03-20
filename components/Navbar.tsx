@@ -2,8 +2,11 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ShoppingCart, Menu, X, Search, User } from 'lucide-react';
+import { ShoppingCart, Menu, X, Search, User, LogOut } from 'lucide-react';
 import useCartStore from '@/store/cart';
+import { useAuth } from '@/contexts/AuthContext';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 const categories = [
   { id: 'fruits-vegetables', name: 'Fruits & Vegetables' },
@@ -20,6 +23,18 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const cartItems = useCartStore((state) => state.items);
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const { user, logout } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      toast.success('Logged out successfully');
+      router.push('/');
+    } catch (error) {
+      toast.error('Failed to log out');
+    }
+  };
 
   return (
     <nav className="bg-white shadow-md">
@@ -61,9 +76,23 @@ const Navbar = () => {
                   </span>
                 )}
               </Link>
-              <Link href="/account" className="text-gray-600 hover:text-gray-900">
-                <User className="h-6 w-6" />
-              </Link>
+              {user ? (
+                <>
+                  <Link href="/account" className="text-gray-600 hover:text-gray-900">
+                    <User className="h-6 w-6" />
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="text-gray-600 hover:text-gray-900"
+                  >
+                    <LogOut className="h-6 w-6" />
+                  </button>
+                </>
+              ) : (
+                <Link href="/login" className="text-gray-600 hover:text-gray-900">
+                  <User className="h-6 w-6" />
+                </Link>
+              )}
             </div>
             
             <button
